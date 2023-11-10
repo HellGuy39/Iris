@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Iris"
 include(":app")
+include(":iris-logger")
