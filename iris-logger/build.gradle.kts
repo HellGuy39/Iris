@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    `maven-publish`
 }
 
 android {
@@ -40,4 +41,17 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+configure<PublishingExtension> {
+    publications.create<MavenPublication>("iris-logger") {
+        groupId = "com.hellguy39.iris.iris-logger"
+        artifactId = "iris-logger"
+        version = "0.1.3"
+        pom.packaging = "jar"
+        artifact("${layout.buildDirectory}/libs/iris-logger.jar")
+    }
+    repositories {
+        mavenLocal()
+    }
 }
