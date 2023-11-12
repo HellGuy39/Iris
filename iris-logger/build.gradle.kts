@@ -47,7 +47,7 @@ configure<PublishingExtension> {
     publications.create<MavenPublication>("iris-logger") {
         groupId = "com.hellguy39.iris"
         artifactId = "iris-logger"
-        version = "0.1.2"
+        version = "0.1.3"
         pom.packaging = "jar"
         artifact("${buildDir}/libs/iris-logger.jar")
     }
