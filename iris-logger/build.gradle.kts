@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    `maven-publish`
+    id("maven-publish")
 }
 
 android {
@@ -47,9 +47,8 @@ configure<PublishingExtension> {
     publications.create<MavenPublication>("iris-logger") {
         groupId = "com.hellguy39.iris"
         artifactId = "iris-logger"
-        version = "0.1.4"
-//        pom.packaging = "jar"
-//        artifact("${buildDir}/libs/iris-logger.jar")
+        version = "0.1.5"
+        artifact("$buildDir/outputs/aar/iris-logger-release.aar")
     }
     repositories {
         mavenLocal()
