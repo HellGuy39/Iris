@@ -38,6 +38,7 @@ android {
 dependencies {
 
     implementation(project(":iris-logger"))
+    implementation(project(":iris-shared-prefs"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

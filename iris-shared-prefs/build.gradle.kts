@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-private val moduleName = "iris_logger"
+private val moduleName = "iris_shared_prefs"
 
 android {
     namespace = "${Configuration.ProjectId}.${moduleName}"

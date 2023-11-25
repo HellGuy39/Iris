@@ -6,17 +6,17 @@ import kotlin.reflect.KProperty
 
 fun taggedLogger(tag: String): TaggedLoggerDelegate = TaggedLoggerDelegate(tag)
 
-class TaggedLoggerDelegate(tag: String): ReadOnlyProperty<Any?, Logger> {
+class TaggedLoggerDelegate(tag: String): ReadOnlyProperty<Any?, IrisLogger> {
 
     private val logger by lazy { TaggedLogger(tag) }
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): Logger = logger
+    override fun getValue(thisRef: Any?, property: KProperty<*>): IrisLogger = logger
 
 }
 
 class TaggedLogger(
     private val tag: String
-): Logger {
+): IrisLogger {
 
     override fun i(msg: String) {
         Log.i(tag, msg)

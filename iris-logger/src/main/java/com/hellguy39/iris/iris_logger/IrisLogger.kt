@@ -1,6 +1,6 @@
 package com.hellguy39.iris.iris_logger
 
-interface Logger {
+interface IrisLogger {
 
     fun i(msg: String)
 
