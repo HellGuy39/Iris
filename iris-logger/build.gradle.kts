@@ -4,15 +4,25 @@ plugins {
     id("maven-publish")
 }
 
+private val libraryVersion = "0.1.6"
+private val libraryGroup = "com.hellguy39.iris"
+private val libraryArtifact = "iris-logger"
+
+version = libraryVersion
+group = libraryGroup
+
 android {
     namespace = "com.hellguy39.iris.iris_logger"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        
         consumerProguardFiles("consumer-rules.pro")
+    }
+
+    publishing {
+        singleVariant("release")
     }
 
     buildTypes {
@@ -29,7 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
@@ -38,17 +48,15 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }
 
 configure<PublishingExtension> {
-    publications.create<MavenPublication>("iris-logger") {
-        groupId = "com.hellguy39.iris"
-        artifactId = "iris-logger"
-        version = "0.1.5"
-        artifact("$buildDir/outputs/aar/iris-logger-release.aar")
+    publications.create<MavenPublication>(libraryArtifact) {
+        groupId = libraryGroup
+        artifactId = libraryArtifact
+        version = libraryVersion
+        artifact("${layout.buildDirectory}/outputs/aar/iris-logger-release.aar")
     }
     repositories {
         mavenLocal()
